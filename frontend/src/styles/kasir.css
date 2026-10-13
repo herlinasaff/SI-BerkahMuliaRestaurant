@@ -1,0 +1,403 @@
+@import './base.css';
+@import './components.css';
+
+/* Tata Letak Utama POS Kasir (2 Kolom) */
+.pos-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+}
+
+/* Sisi Kiri: Menu & Katalog */
+.pos-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px 24px;
+}
+
+.pos-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pos-brand h2 {
+    font-size: 24px;
+    color: var(--maroon-dark);
+}
+
+.pos-brand p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pos-user-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #FFF;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    font-size: 13px;
+}
+
+/* Kategori Filter Tabs */
+.category-tabs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border-color);
+    background: #FFF;
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background: var(--maroon);
+    color: var(--cream);
+    border-color: var(--maroon);
+}
+
+/* Grid Menu Produk */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.product-card {
+    background: #FFF;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold);
+}
+
+.product-code {
+    font-size: 11px;
+    color: var(--gold-dark);
+    font-weight: 700;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 6px 0 10px;
+    color: var(--text-dark);
+    min-height: 40px;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 8px;
+}
+
+.product-price {
+    font-weight: 700;
+    color: var(--maroon);
+    font-size: 15px;
+}
+
+.product-stock {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Sisi Kanan: Keranjang Kasir (Cart Panel) */
+.pos-right {
+    width: 420px;
+    background: #FFF;
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.03);
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.customer-selector {
+    padding: 14px 20px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 8px;
+}
+
+.cust-btn {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    background: #FFF;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.cust-btn.active {
+    background: var(--maroon);
+    color: #FFF;
+    border-color: var(--maroon);
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #F0EAE1;
+}
+
+.cart-item-info h4 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cart-item-info span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.cart-qty-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-qty {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: #FFF;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Ringkasan Pembayaran */
+.cart-summary {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: #FAF8F5;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.summary-row.total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-top: 10px;
+    border-top: 1.5px dashed var(--border-color);
+    padding-top: 10px;
+}
+
+.pay-input-group {
+    margin-top: 14px;
+}
+
+/* ============================================
+   MODAL STRUK THERMAL & PENGATURAN CETAK (PRINT)
+   ============================================ */
+.receipt-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 16px;
+}
+
+.receipt-modal-card {
+    background: #FFF;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 380px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.receipt-modal-header {
+    padding: 14px 18px;
+    background: var(--maroon);
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.receipt-modal-header h4 {
+    color: #FFF;
+    font-size: 15px;
+    margin: 0;
+}
+
+.receipt-close-btn {
+    background: transparent;
+    border: none;
+    color: #FFF;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Tampilan Kertas Struk Realistis */
+.receipt-paper {
+    background: #FFF;
+    padding: 20px 18px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: #000;
+    line-height: 1.4;
+}
+
+.receipt-header,
+.receipt-footer {
+    text-align: center;
+}
+
+.receipt-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    font-family: var(--font-sans);
+}
+
+.receipt-divider {
+    text-align: center;
+    letter-spacing: -1px;
+    margin: 6px 0;
+}
+
+.receipt-meta div {
+    display: flex;
+    gap: 4px;
+}
+
+.receipt-meta span:first-child {
+    width: 75px;
+}
+
+.receipt-item-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.receipt-totals .rec-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.rec-grand-total {
+    font-size: 14px;
+    font-weight: 700;
+    border-top: 1px dashed #000;
+    border-bottom: 1px dashed #000;
+    padding: 4px 0;
+    margin: 4px 0;
+}
+
+.receipt-footer p {
+    margin: 2px 0;
+}
+
+.receipt-actions {
+    padding: 14px 18px;
+    border-top: 1px solid var(--border-color);
+    background: #FAF8F5;
+    display: flex;
+    gap: 10px;
+}
+
+/* 🖨️ ATURAN PRINT KHUSUS PRINTER THERMAL (58mm/80mm) */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #receiptPaper,
+    #receiptPaper * {
+        visibility: visible;
+    }
+
+    #receiptPaper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: 58mm;
+        /* Ukuran pas printer thermal */
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+}

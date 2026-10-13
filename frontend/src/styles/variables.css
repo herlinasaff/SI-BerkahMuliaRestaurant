@@ -1,0 +1,42 @@
+:root {
+    /* Palet Warna Restoran Berkah Mulia */
+    --maroon-dark: #4A0505;
+    --maroon: #6B0B0B;
+    --maroon-light: #8B1A1A;
+
+    --gold: #C9A87C;
+    --gold-light: #E8D5B8;
+    --gold-dark: #9E7B4F;
+    --gold-hover: #b89362;
+
+    --cream: #FFFCF8;
+    --bg-primary: #F5F0EB;
+    --card-bg: #FFFFFF;
+
+    --text-dark: #1A0505;
+    --text-muted: #7A6A5E;
+    --border-color: #E6DDD4;
+
+    /* Status Warna */
+    --success: #15803d;
+    --success-bg: #dcfce7;
+    --danger: #b91c1c;
+    --danger-bg: #fee2e2;
+    --warning: #b45309;
+    --warning-bg: #fef3c7;
+    --info: #0284c7;
+
+    /* Tipografi */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Bayangan & Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 2px 4px rgba(107, 11, 11, 0.05);
+    --shadow-md: 0 4px 14px rgba(107, 11, 11, 0.08);
+    --shadow-lg: 0 10px 30px rgba(107, 11, 11, 0.15);
+
+    --transition: all 0.25s ease-in-out;
+}

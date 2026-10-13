@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - POS Restoran Berkah Mulia</title>
+
+    <!-- CSS Terpisah -->
+    <link rel="stylesheet" href="/src/styles/login.css">
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+        <div class="bm-card login-box">
+
+            <div class="login-header">
+                <i class="fa-solid fa-utensils logo-icon"></i>
+                <h1>Berkah Mulia</h1>
+                <p>Sistem Pengelolaan & Kasir Restoran</p>
+            </div>
+
+            <div id="alertBox" class="bm-alert" style="display: none;"></div>
+
+            <form id="loginForm">
+                <div class="bm-form-group">
+                    <label class="bm-label" for="username">Username</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="username" class="bm-input"
+                            placeholder="Masukkan username (cth: kasir1 / admin)" required autofocus>
+                    </div>
+                </div>
+
+                <div class="bm-form-group">
+                    <label class="bm-label" for="password">Password</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" class="bm-input" placeholder="Masukkan password" required>
+                    </div>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="bm-btn bm-btn-primary"
+                    style="width: 100%; margin-top: 10px;">
+                    <i class="fa-solid fa-right-to-bracket"></i> Masuk ke Sistem
+                </button>
+            </form>
+
+            <div class="login-footer">
+                &copy; 2026 Restoran Berkah Mulia &bull; Sistem POS Decoupled
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Terpisah -->
+    <script type="module" src="/src/js/login.js"></script>
+</body>
+
+</html>
