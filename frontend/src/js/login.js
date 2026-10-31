@@ -1,20 +1,22 @@
 import { api } from '../services/api.js';
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const alertBox = document.getElementById('alertBox');
     const btnSubmit = document.getElementById('btnSubmit');
 
-    // Jika sudah ada sesi aktif, langsung arahkan
+
     const currentUser = api.getUser();
     if (currentUser && api.getToken()) {
-        redirectByRole(currentUser.role);
+        window.location.href = './dashboard.html';
         return;
     }
 
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         hideAlert();
+
 
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
@@ -28,35 +30,27 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSubmit.disabled = true;
             btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...';
 
+
             const response = await api.auth.login(username, password);
 
-            // Simpan Token & User
+
             api.setSession(response.data.token, response.data.user);
 
-            // Tampilkan notifikasi sukses singkat
+
             showAlert(response.message, 'success');
 
-            // Arahkan ke halaman sesuai peran
+
             setTimeout(() => {
-                redirectByRole(response.data.user.role);
-            }, 700);
+                window.location.href = './dashboard.html';
+            }, 500);
 
         } catch (error) {
-            showAlert(error.message || 'Username atau password salah.');
+            showAlert(error.message || 'Username tau password salah.');
         } finally {
             btnSubmit.disabled = false;
             btnSubmit.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Masuk ke Sistem';
         }
     });
-
-    function redirectByRole(role) {
-        if (role === 'kasir') {
-            window.location.href = '/kasir.html';
-        } else {
-            // Admin & Pemilik diarahkan ke POS atau Dashboard
-            window.location.href = '/kasir.html';
-        }
-    }
 
     function showAlert(message, type = 'danger') {
         alertBox.textContent = message;

@@ -351,3 +351,10 @@ function showReceiptModal(sale) {
 function closeReceiptModal() {
     document.getElementById('receiptModal').style.display = 'none';
 }
+
+function updateChange() {
+    const grandTotal = Number(document.getElementById('lblGrandTotal').dataset.val || 0);
+    const received = Number(document.getElementById('cashReceived').value || 0);
+    const change = Math.max(0, received - grandTotal);
+    document.getElementById('lblChange').textContent = 'Rp ' + change.toLocaleString('id-ID');
+}

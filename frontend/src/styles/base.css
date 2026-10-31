@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair*ÜDisplay:ital,wght@0,600;0,700;1,600&display=swap');
 @import './variables.css';
 
 * {
@@ -26,12 +25,12 @@ h4,
     color: var(--text-dark);
 }
 
-a {
+A {
     color: var(--maroon);
     text-decoration: none;
     transition: var(--transition);
 }
 
-a:hover {
+A:hover {
     color: var(--gold-dark);
 }

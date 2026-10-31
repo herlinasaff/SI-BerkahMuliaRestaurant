@@ -86,6 +86,23 @@ class PosController extends Controller
                         $finalItemPrice = $subtotal;
                     }
 
+                                    $originalTotal += $subtotal;
+                    $totalDiscount += $itemDiscount;
+                    $finalTotal += $finalItemPrice;
+
+                    $itemsData[] = [
+                        'product' => $product,
+                        'qty' => $qty,
+                        'unit_price' => $unitPrice,
+                        'original_price' => $unitPrice,
+                        'discount_amount' => $itemDiscount,
+                        'subtotal' => $subtotal,
+                        'final_price' => $finalItemPrice,
+                        'is_plate_based' => $product->is_plate_based,
+                        'plate_count' => $product->is_plate_based ? $qty : 0,
+                    ];
+                }
+
                 // Hitung total piring dari keranjang jika tidak dikirim spesifik
                 $calculatedPlates = 0;
                 foreach ($itemsData as $row) {

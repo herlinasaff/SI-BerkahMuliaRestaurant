@@ -8,21 +8,15 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
-// ============================================
-// 1. PUBLIC ROUTES (Tanpa Login)
-// ============================================
+// 1. PUBLIC ROUTES
 Route::post('/login', [AuthController::class, 'login']);
 
-// ============================================
-// 2. PROTECTED ROUTES (Wajib Bearer Token)
-// ============================================
+// 2. PROTECTED ROUTES
 Route::middleware('auth.api')->group(function () {
-
-    // --- Profil & Logout ---
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // --- Modul POS Kasir (Bisa diakses Kasir & Admin) ---
+    // Modul POS Kasir
     Route::prefix('pos')->group(function () {
         Route::get('/menu', [PosController::class, 'getMenu']);
         Route::post('/checkout', [PosController::class, 'checkout']);
@@ -30,7 +24,7 @@ Route::middleware('auth.api')->group(function () {
         Route::get('/history', [PosController::class, 'getHistory']);
     });
 
-    // --- Modul Produk & Inventaris ---
+    // Modul Produk & Inventaris
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductController::class, 'index']);
         Route::get('/categories', [ProductController::class, 'getCategories']);
@@ -40,23 +34,23 @@ Route::middleware('auth.api')->group(function () {
         Route::post('/{id}/stock-adjustment', [ProductController::class, 'adjustStock'])->middleware('role:admin');
     });
 
-    // --- Modul Pengadaan / Belanja Supplier ---
+    // Modul Pengadaan
     Route::prefix('purchases')->middleware('role:admin,pemilik')->group(function () {
         Route::get('/', [PurchaseController::class, 'index']);
         Route::post('/', [PurchaseController::class, 'store']);
         Route::get('/suppliers', [PurchaseController::class, 'getSuppliers']);
     });
 
-    // --- Modul Biaya Operasional ---
+    // Modul Biaya Operasional
     Route::prefix('expenses')->middleware('role:admin,pemilik')->group(function () {
         Route::get('/', [ExpenseController::class, 'index']);
         Route::post('/', [ExpenseController::class, 'store']);
-        Route::delete('/{id}', [ExpenseController::class, 'destroy']);
+        Route::delete('{id}', [ExpenseController::class, 'destroy']);
     });
 
-    // --- Modul Analitik & Dashboard ---
-    Route::prefix('analytics')->middleware('role:admin,pemilik')->group(function () {
-        Route::get('/dashboard', [AnalyticsController::class, 'dashboard']);
-        Route::get('/profit-loss', [AnalyticsController::class, 'profitLoss']);
+    // Modul Analitik & Dashboard (Terbuka untuk SEMUA role, termasuk Kasir)
+    Route::prefix('analytics')->group(function () {
+        Route::get('/dashboard', [AnalyticsController::class, 'getDashboard']);
+        Route::get('/profit-loss', [AnalyticsController::class, 'profitLoss'])->middleware('role:admin,pemilik');
     });
 });

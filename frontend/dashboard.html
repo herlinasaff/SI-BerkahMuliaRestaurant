@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Restoran Berkah Mulia</title>
+    <link rel="stylesheet" href="./src/styles/variables.css">
+    <link rel="stylesheet" href="./src/styles/base.css">
+    <link rel="stylesheet" href="./src/styles/components.css">
+    <link rel="stylesheet" href="./src/styles/dashboard.css">
+</head>
+<body class="dashboard-body">
+    <!-- Navbar Utama -->
+    <header class="top-navbar">
+        <div class="nav-brand">
+            <span class="brand-logo">🍽️</span>
+            <div>
+                <h1 class="brand-title">Restoran Berkah Mulia</h1>
+                <span class="brand-sub">Sistem Manajemen & Kasir POS</span>
+            </div>
+        </div>
+
+        <div class="nav-user-panel">
+            <div class="user-badge-container">
+                <span class="user-name" id="navUserName">Memuat...</span>
+                <span class="user-role-badge" id="navUserRole">-</span>
+            </div>
+            <div class="shift-badge-container" id="navShiftBadge">
+                <span class="shift-dot"></span>
+                <span id="navShiftName">Shift -</span>
+            </div>
+            <button class="btn-logout" id="btnLogout" title="Keluar dari sistem">
+                🚯 Keluar
+            </button>
+        </div>
+    </header>
+
+    <!-- Konten Utama Dashboard -->
+    <main class="dashboard-container">
+        <!-- 1. Header Ringkasan Metrik Dinamis (Revisi Kasir, Admin, Pemilik) -->
+        <section class="kpi-header-section">
+            <div class="section-title-wrap">
+                <h2 id="greetingText">Selamat Datang</h2>
+                <p id="subGreetingText">Berikut ringkasan operasional restoran Anda.</p>
+            </div>
+
+            <!-- Kartu KPI Dinamis -->
+            <div class="kpi-grid" id="kpiGrid">
+                <!-- Di-generate otomatis oleh dashboard.js -->
+            </div>
+        </section>
+
+        <!-- 2. Menu Navigasi Akses Cepat Sesuai Role -->
+        <section class="menu-action-section">
+            <h3 class="action-heading">Menu Utama Akses Cepat</h3>
+            <div class="action-grid" id="actionGrid">
+                <!-- Kartu Menu Dinamis -->
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./src/js/dashboard.js"></script>
+</body>
+</html>
